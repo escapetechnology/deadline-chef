@@ -1,0 +1,9 @@
+[LogLevel]
+Type=enum
+Values=debug;info;warn;error;fatal;
+Category=Options
+CategoryOrder=0
+Index=1
+Label=log level
+Default=warn
+Description=The log level a chef-client run will provide.

@@ -1,0 +1,35 @@
+[About]
+Type=label
+Label=About
+Category=About plugin
+CategoryOrder=-1
+Index=0
+Default=Chef plugin for Deadline
+Description=Not configurable
+
+[ConcurrentTasks]
+Type=label
+Label=ConcurrentTasks
+Category=About plugin
+CategoryOrder=-1
+Index=0
+Default=False
+Description=Not configurable
+
+[ChefClientExecutable]
+Type=multilinemultifilename
+Label=chef-client executable
+Category=chef-client executables
+CategoryOrder=0
+CategoryIndex=0
+Default=chef-client
+Description=The path to the chef-client executable file. Enter alternative paths on separate lines.
+
+[ChefClientSudo]
+Type=boolean
+Label=make use of sudo to run
+Category=chef-client executables
+CategoryOrder=0
+CategoryIndex=1
+Default=True
+Description=Make use of sudo to run
