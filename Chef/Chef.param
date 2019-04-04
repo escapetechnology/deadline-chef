@@ -25,6 +25,15 @@ CategoryIndex=0
 Default=chef-client
 Description=The path to the chef-client executable file. Enter alternative paths on separate lines.
 
+[SudoExecutable]
+Type=multilinemultifilename
+Label=sudo executable
+Category=sudo executables
+CategoryOrder=0
+CategoryIndex=2
+Default=sudo
+Description=The path to the sudo executable file. Enter alternative paths on separate lines.
+
 [ChefClientSudo]
 Type=boolean
 Label=make use of sudo to run

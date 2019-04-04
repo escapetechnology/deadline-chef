@@ -30,18 +30,19 @@ class ChefPlugin (DeadlinePlugin):
         self.SingleFramesOnly = True
 
     def RenderExecutable( self ):
-        cmdList = self.GetConfigEntry("ChefClientExecutable")
-        cmd = FileUtils.SearchFileList(cmdList)
-
-        if cmd == "":
-            self.FailRender("chef-client executable file was not found in the semicolon separated list \"" + cmdList + "\". The path to the executable can be configured from the Plugin Configuration in the Deadline Monitor." )
-
         sudo = self.GetConfigEntry("ChefClientSudo")
 
         if sudo:
-            cmd = "sudo %s" % cmd
+            cmdList = self.GetConfigEntry("SudoExecutable")
 
-        return cmd
+            cmd = FileUtils.SearchFileList(cmdList)
+
+            if cmd == "":
+                self.FailRender("sudo executable file was not found in the semicolon separated list \"" + cmdList + "\". The path to the executable can be configured from the Plugin Configuration in the Deadline Monitor." )
+
+            return cmd
+        else:
+            return self.GetChefClientExecutable()
 
     def RenderArgument( self ):
         logLevel = self.GetPluginInfoEntry("LogLevel")
@@ -49,3 +50,13 @@ class ChefPlugin (DeadlinePlugin):
         args = " --log_level \"%s\"" % logLevel
 
         return args
+
+    def GetChefClientExecutable( self ):
+        cmdList = self.GetConfigEntry("ChefClientExecutable")
+
+        cmd = FileUtils.SearchFileList(cmdList)
+
+        if cmd == "":
+            self.FailRender("chef-client executable file was not found in the semicolon separated list \"" + cmdList + "\". The path to the executable can be configured from the Plugin Configuration in the Deadline Monitor." )
+
+        return cmd
