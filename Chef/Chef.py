@@ -49,6 +49,13 @@ class ChefPlugin (DeadlinePlugin):
 
         args = " --log_level \"%s\"" % logLevel
 
+        sudo = self.GetConfigEntry("ChefClientSudo")
+
+        if sudo:
+            cmd = self.GetChefClientExecutable()
+
+            args = "%s %s" % (cmd, args)
+
         return args
 
     def GetChefClientExecutable( self ):
